@@ -1,6 +1,7 @@
 package JavaAssignment;
 
-public class MultipleCatchException {
+public class MultipleCatchException
+{
 
     public static void main(String[] args)
     {

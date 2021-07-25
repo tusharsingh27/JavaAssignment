@@ -2,7 +2,7 @@ package JavaAssignment;
 import com.sun.source.tree.TryTree;
 
 import java.util.Scanner;
-public class MultipleCatchException1
+public class MultipleCatchExceptions
 {
     public static void main(String[] args) {
         int x, y;
