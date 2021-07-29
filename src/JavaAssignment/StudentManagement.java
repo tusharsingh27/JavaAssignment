@@ -10,7 +10,7 @@ class Student
     private String age;
     private String address;
     private String grade;
-
+    //Making Student Details as Private
     public Student() { }
 
     public Student(String id, String name, String age, String address,String grade ){
@@ -19,6 +19,7 @@ class Student
         this.age = age;
         this.address = address;
         this.grade = grade;
+        //Used to return current class instance variable
     }
 
     public void setId(String id) {
@@ -66,7 +67,9 @@ class Student
 class StudentManagement {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        //Creates an object of Scanner
         ArrayList<Student> arr = new ArrayList<Student>();
+        //Create ArrrayList of Students
 
         while (true) {
             System.out.println();
@@ -74,8 +77,10 @@ class StudentManagement {
             System.out.print("Please enter operation: ");
             //Enter numeric digits for operation
             int what = scanner.nextInt();
+            //Takes input from Keyboard
 
             switch (what) {
+                //Case statement within Switch Block
                 case 1:
                     addStu(arr);
                     break;
@@ -106,6 +111,7 @@ class StudentManagement {
         System.out.println("*** 4: View all student information ***");
         System.out.println("*** 5: Exit ***");
     }
+    //Put the information about Student by pressing the required number
 
     private static void addStu(ArrayList<Student> arr) {
         Scanner scanner = new Scanner(System.in);
