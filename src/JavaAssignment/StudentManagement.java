@@ -72,6 +72,7 @@ class StudentManagement {
             System.out.println();
             print();
             System.out.print("Please enter operation: ");
+            //Enter numeric digits for operation
             int what = scanner.nextInt();
 
             switch (what) {
@@ -109,25 +110,31 @@ class StudentManagement {
     private static void addStu(ArrayList<Student> arr) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter student ID: ");
+        //Enter numeric Student Id of any Student
         String id = scanner.nextLine();
 
         for (Student stu : arr) {
             if (stu.getId().equals(id)) {
                 System.out.println("Student already exists!");
+                //If Student Id same it shows already Student is there of same ID
                 return;
             }
         }
 
         System.out.print("Please enter the student's name: ");
+        //Enter Alphabet Student name
         String name = scanner.nextLine();
 
         System.out.print("Please enter student age: ");
+        //Enter numeric Student age
         String age = scanner.nextLine();
 
         System.out.print("Please enter student address: ");
+        //Enter Alphabet Student Adddress
         String address = scanner.next();
 
         System.out.print("Please enter student grade[A+,A,A-,B,B-C+,C,C-F]:");
+        //Enter Grade of specified above type
         String grade = scanner.next();
 
         Student stu = new Student(id, name, age, address, grade);
@@ -141,6 +148,7 @@ class StudentManagement {
     private static void deleteStu(ArrayList<Student> arr) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the student ID to be deleted: ");
+        //Enter Student Id which we want to Delete
         String id = scanner.nextLine();
 
         for (Student stu : arr) {
@@ -151,11 +159,13 @@ class StudentManagement {
             }
         }
         System.out.println("Deletion failed! No such student!");
+        //If Entered Incorrect then deletion will be failed.
     }
 
     private static void setStu(ArrayList<Student> arr) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the student ID to be modified: ");
+        //Enter Student Id which we have to change some things
         String id = scanner.nextLine();
 
         for (Student stu : arr) {
@@ -181,6 +191,7 @@ class StudentManagement {
             }
         }
         System.out.println("Modification failed! No such student!");
+        //If entered incorrect then changing not take place
     }
 
 
@@ -188,6 +199,7 @@ class StudentManagement {
         String[] gradeValue = {"A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "F"};
         if (arr.size() == 0) {
             System.out.println("No students");
+            //If we do not entered above grade in any type of Student then it will show No Students of that Grade is there
             return;
         }
         for (int i = 0; i < gradeValue.length; i++) {
@@ -196,7 +208,7 @@ class StudentManagement {
                 if (stu.getGrade().equals(gradeValue[i])) {
                     System.out.println("Sorted by Grades\n");
                     System.out.printf("student ID: " + stu.getId() + " Name: " + stu.getName() + " Age: " + stu.getAge() + " Address: " + stu.getAddress() + " Grade: " + stu.getGrade() + "\n");
-
+                    //It will print sorting by grade like A,A+ of Students
                 }
             }
         }
