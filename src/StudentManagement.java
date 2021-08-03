@@ -1,24 +1,23 @@
-package JavaAssignment;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-
-class Student
+class Student1
 {
     private String id;
     private String name;
     private String age;
     private String address;
     private String grade;
+    //Making Student Details as Private
+    public Student1() { }
 
-    public Student() { }
-
-    public Student(String id, String name, String age, String address,String grade ){
+    public Student1(String id, String name, String age, String address,String grade ){
         this.id = id;
         this.name = name;
         this.age = age;
         this.address = address;
         this.grade = grade;
+        //Used to return current class instance variable
     }
 
     public void setId(String id) {
@@ -66,26 +65,31 @@ class Student
 class StudentManagement {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Student> arr = new ArrayList<Student>();
+        //Creates an object of Scanner
+        ArrayList<Student1> arr = new ArrayList<Student1>();
+        //Create ArrrayList of Students
 
         while (true) {
             System.out.println();
             print();
             System.out.print("Please enter operation: ");
+            //Enter numeric digits for operation
             int what = scanner.nextInt();
+            //Takes input from Keyboard
 
             switch (what) {
+                //Case statement within Switch Block
                 case 1:
-                    addStu(arr);
+                    addStudent(arr);
                     break;
                 case 2:
-                    setStu(arr);
+                    setStudent(arr);
                     break;
                 case 3:
-                    deleteStu(arr);
+                    deleteStudent(arr);
                     break;
                 case 4:
-                    allStu(arr);
+                    allStudent(arr);
                     break;
                 case 5: {
                     System.out.println("Welcome to use again!");
@@ -105,32 +109,39 @@ class StudentManagement {
         System.out.println("*** 4: View all student information ***");
         System.out.println("*** 5: Exit ***");
     }
+    //Put the information about Student by pressing the required number
 
-    private static void addStu(ArrayList<Student> arr) {
+    private static void addStudent(ArrayList<Student1> arr) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter student ID: ");
+        //Enter numeric Student Id of any Student
         String id = scanner.nextLine();
 
-        for (Student stu : arr) {
+        for (Student1 stu : arr) {
             if (stu.getId().equals(id)) {
                 System.out.println("Student already exists!");
+                //If Student Id same it shows already Student is there of same ID
                 return;
             }
         }
 
         System.out.print("Please enter the student's name: ");
+        //Enter Alphabet Student name
         String name = scanner.nextLine();
 
         System.out.print("Please enter student age: ");
+        //Enter numeric Student age
         String age = scanner.nextLine();
 
         System.out.print("Please enter student address: ");
+        //Enter Alphabet Student Adddress
         String address = scanner.next();
 
         System.out.print("Please enter student grade[A+,A,A-,B,B-C+,C,C-F]:");
+        //Enter Grade of specified above type
         String grade = scanner.next();
 
-        Student stu = new Student(id, name, age, address, grade);
+        Student1 stu = new Student1(id, name, age, address, grade);
         if (arr.add(stu)) {
             System.out.println("Added successfully!");
         } else {
@@ -138,12 +149,13 @@ class StudentManagement {
         }
     }
 
-    private static void deleteStu(ArrayList<Student> arr) {
+    private static void deleteStudent(ArrayList<Student1> arr) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the student ID to be deleted: ");
+        //Enter Student Id which we want to Delete
         String id = scanner.nextLine();
 
-        for (Student stu : arr) {
+        for (Student1 stu : arr) {
             if (stu.getId().equals(id)) {
                 if (arr.remove(stu))
                     System.out.println("successfully deleted!");
@@ -151,14 +163,16 @@ class StudentManagement {
             }
         }
         System.out.println("Deletion failed! No such student!");
+        //If Entered Incorrect then deletion will be failed.
     }
 
-    private static void setStu(ArrayList<Student> arr) {
+    private static void setStudent(ArrayList<Student1> arr) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the student ID to be modified: ");
+        //Enter Student Id which we have to change some things
         String id = scanner.nextLine();
 
-        for (Student stu : arr) {
+        for (Student1 stu : arr) {
             if (stu.getId().equals(id)) {
                 System.out.print("Please enter the name to be modified: ");
                 String name = scanner.nextLine();
@@ -181,22 +195,24 @@ class StudentManagement {
             }
         }
         System.out.println("Modification failed! No such student!");
+        //If entered incorrect then changing not take place
     }
 
 
-    private static void allStu(ArrayList<Student> arr) {
+    private static void allStudent(ArrayList<Student1> arr) {
         String[] gradeValue = {"A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "F"};
         if (arr.size() == 0) {
             System.out.println("No students");
+            //If we do not entered above grade in any type of Student then it will show No Students of that Grade is there
             return;
         }
         for (int i = 0; i < gradeValue.length; i++) {
 
-            for (Student stu : arr) {
+            for (Student1 stu : arr) {
                 if (stu.getGrade().equals(gradeValue[i])) {
                     System.out.println("Sorted by Grades\n");
                     System.out.printf("student ID: " + stu.getId() + " Name: " + stu.getName() + " Age: " + stu.getAge() + " Address: " + stu.getAddress() + " Grade: " + stu.getGrade() + "\n");
-
+                    //It will print sorting by grade like A,A+ of Students
                 }
             }
         }
